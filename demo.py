@@ -1,1 +1,1 @@
-print(list(range(100)))
+print(list(range(100))
