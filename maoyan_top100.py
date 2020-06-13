@@ -1,16 +1,21 @@
 import requests
 import re
 import json
+import time
+from requests.exceptions import RequestException
 
 def get_html_page(url):
-    headers = {
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36 Edg/83.0.478.45'
-    }
-    html = requests.get(url,headers=headers)
-    if html.status_code == 200:
-        return html.text
-    else:
+    try:
+        headers = {
+            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36 Edg/83.0.478.45'
+        }
+        html = requests.get(url,headers=headers)
+        if html.status_code == 200:
+            return html.text
         return None
+    except RequestException:
+        return None
+
 
 def parse_page(html):
     pattern = re.compile(
@@ -30,19 +35,22 @@ def parse_page(html):
         }
 
 def write_to_file(content):
-    with open('maoyan_top.txt','a',encoding='utf-8') as f:
-        print(type(json.dumps(content)))
+    with open('maoyan.txt','a',encoding='utf-8') as f:
+        # print(type(content))
         f.write(json.dumps(content,ensure_ascii=False)+'\n')
 
-def main():
-    url = 'https://maoyan.com/board/4?offset=0'
+def main(offset):
+    url = 'https://maoyan.com/board/4?offset=0'+str(offset)
     html = get_html_page(url)
     result=parse_page(html)
     for i in result:
         write_to_file(i)
     # print(html)
 
-main()
+if __name__ == '__main__':
+    for i in range(10):
+        main(offset=i*10)
+        time.sleep(1)
 
 
 
