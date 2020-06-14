@@ -35,7 +35,7 @@ def parse_page(html):
         }
 
 def write_to_file(content):
-    with open('maoyan.txt','a',encoding='utf-8') as f:
+    with open('maoyan.json','a',encoding='utf-8') as f:
         # print(type(content))
         f.write(json.dumps(content,ensure_ascii=False)+'\n')
 

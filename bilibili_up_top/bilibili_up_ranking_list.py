@@ -34,7 +34,7 @@ def parse_page(content):
         })
 
 def write_to_file(content):
-    with open('bilibili_up_ranking_list.txt','a',encoding='utf-8') as f:
+    with open('bilibili_up_ranking_list.json','a',encoding='utf-8') as f:
         f.write(json.dumps(content,ensure_ascii=False)+'\n')
 
 if __name__ == '__main__':
