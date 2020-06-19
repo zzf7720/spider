@@ -6,17 +6,20 @@ from selenium.webdriver.support.wait import WebDriverWait
 from urllib.parse import quote
 from lxml import etree
 import pymongo
+import json
 
 
 browser = webdriver.Chrome()
 
 wait = WebDriverWait(browser,10)
-KEYWORD = '苹果手机'
+KEYWORD = '小米手机'
+url = 'https://s.taobao.com/search?q=' + quote(KEYWORD)
+
 
 def index_page(page):
     print('正在爬取第',page,'页')
     try:
-        url = 'https://s.taobao.com/search?q=' + quote(KEYWORD)
+
         browser.get(url)
         if page > 1:
             input = wait.until(
@@ -42,7 +45,7 @@ def index_page(page):
 def get_products():
     html = browser.page_source
     doc = etree.HTML(html)
-    items = doc.xpath('//*[@id="mainsrp-itemlist"]/div/div/div/div')
+    items = doc.xpath('//*[@id="mainsrp-itemlist"]/div/div/div/div/div')
     for item in items:
         product = {
             'image':item.xpath('div//img[contains(@class,"J_ItemPic")]/@data-src'),
@@ -67,11 +70,20 @@ def save_to_mongo(result):
     except Exception:
         print('Faild')
 
-MAX_PAGE = 10
+MAX_PAGE = 3
 def main():
+    browser.get(url)
+    with open('cookies.json','r') as f:
+        cookies = json.loads(f.read())
+    for i in cookies:
+        browser.add_cookie(i)
 
     for i in range(1,MAX_PAGE+1):
         index_page(i)
+    """第一次登入获取cookie并写入文件"""
+    # with open('cookies.json','w') as f:
+    #     f.write(json.dumps(browser.get_cookies()))
+
 
 main()
 
