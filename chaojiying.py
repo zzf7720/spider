@@ -48,6 +48,6 @@ class Chaojiying_Client(object):
 
 if __name__ == '__main__':
 	chaojiying = Chaojiying_Client('772091199', 'bluesky', '905945')	#用户中心>>软件ID 生成一个替换 96001
-	im = open('u=2282030598,1303150352&fm=26&gp=0.jpg', 'rb').read()													#本地图片文件路径 来替换 a.jpg 有时WIN系统须要//
-	print(chaojiying.PostPic(im, 1902)	)											#1902 验证码类型  官方网站>>价格体系 3.4+版 print 后要加()
+	im = open('b.jpg', 'rb').read()													#本地图片文件路径 来替换 a.jpg 有时WIN系统须要//
+	print(chaojiying.PostPic(im, 9202)	)											#1902 验证码类型  官方网站>>价格体系 3.4+版 print 后要加()
 
