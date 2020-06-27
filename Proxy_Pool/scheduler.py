@@ -1,7 +1,7 @@
 TESTER_CYCLE = 20
 GETTER_CYCLE = 20
-TESTER_ENABLED = True
-GETTER_ENABLED = True
+TESTER_ENABLED = False
+GETTER_ENABLED = False
 API_ENABLED = True
 
 from multiprocessing import Process

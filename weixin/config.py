@@ -1,0 +1,23 @@
+REDIS_HOST = 'localhost'
+
+REDIS_PORT = 6379
+
+REDIS_PASSWORD = None
+
+REDIS_KEY = 'weixin'
+
+PROXY_POOP_URL = 'http://127.0.0.1:5000/random'
+
+VALID_STATUES = 200
+
+MAX_FAILED_TIME = 20
+
+MYSQL_HOST = 'localhost'
+
+MYSQL_PORT = 3306
+
+MYSQL_USER = 'root'
+
+MYSQL_PASSWORD = '7720'
+
+MYSQL_DATABASE = 'weixin'

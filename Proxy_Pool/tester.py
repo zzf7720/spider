@@ -4,7 +4,7 @@ import asyncio
 import time
 
 VALID_STATUS_CODES = [200]
-TEST_URL = 'http://www.baidu.com'
+TEST_URL = 'https://weixin.sogou.com/weixin?type=2&query=NBA'
 BATCH_TEST_SIZE = 100
 
 class Tester(object):
