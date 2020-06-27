@@ -65,7 +65,8 @@ class MysqlPipeline():
         values = ','.join(['%s']*len(data))
         sql = 'insert into %s (%s) values (%s)' % (item.table,keys,values)
         self.cursor.execute(sql,tuple(data.values()))
-
+        self.db.commit()
+        return item
 
 class ImagePipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None):
