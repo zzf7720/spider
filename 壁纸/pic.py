@@ -51,7 +51,7 @@ def main(offset):
         html=get_html_page(i)
         if html:
             parse_pic(html.text)
-    print('正在下载。。。')
+    print('正在下载。。')
 
     for num,i in enumerate(pic):
         print('\r%{:.2f}'.format((num+1)*(100/len(pic))),end='')

@@ -8,10 +8,9 @@
 import scrapy
 from scrapy import Field
 
-class NewItem(scrapy.Item):
-    title = Field()
+class Image360Item(scrapy.Item):
+    collection = table = 'images'
+    id = Field()
     url = Field()
-    text = Field()
-    datetime = Field()
-    source = Field()
-    website = Field()
+    title = Field()
+    thumb = Field()

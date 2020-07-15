@@ -46,8 +46,9 @@ class Crack_Bilibli():
         location = element.location
         size = element.size
         top,bottom,left,right = location['y'],location['y'] + size['height'],location['x'],location['x'] + size['width']
-        suofang = 125/100
-        return (top*suofang,bottom*suofang,left*suofang,right*suofang)
+        position = tuple(map(lambda x:x*(125/100),[top,bottom,left,right]))
+        print(position)
+        return position
         # return (top,bottom,left,right)
 
     def get_screenshot(self):
